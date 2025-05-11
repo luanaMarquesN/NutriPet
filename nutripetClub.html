@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutripet Club | Assinatura Mensal</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        :root {
+            --verde: #497336;
+            --dourado: #bf9341;
+            --bege: #F5E9D9;
+            --cinza: #f8f8f8;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--verde);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-left: -150px; 
+
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--bege);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dourado);
+        }
+        
+        nav ul li a.ativo {
+            color: var(--dourado);
+        }
+        
+        .hero-club {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 65vh;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding: 0 20px;
+}
+
+.hero-club::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Overlay verde com transparência */
+    z-index: 1;
+}
+
+.hero-club .container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 80px; 
+}
+
+.hero-club p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    padding-top: 40px; 
+}
+        
+        .btn {
+            display: inline-block;
+            background: var(--dourado);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background: #a87d36;
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--verde);
+        }
+        
+        /* Benefícios do Clube */
+        .beneficios-club {
+            padding: 60px 0;
+            background-color: var(--cinza);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--verde);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .beneficio-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .beneficio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .beneficio-card i {
+            font-size: 2.5rem;
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+        
+        .beneficio-card h3 {
+            margin-bottom: 15px;
+            color: var(--verde);
+        }
+        
+        /* Planos de Assinatura */
+        .planos {
+            padding: 60px 0;
+        }
+        
+        .planos-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .plano-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .plano-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .plano-card.destaque {
+            border: 2px solid var(--dourado);
+        }
+        
+        .plano-tag {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--dourado);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .plano-card h3 {
+            color: var(--verde);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .plano-preco {
+            font-size: 2rem;
+            color: var(--verde);
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .plano-preco span {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        .plano-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .plano-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .plano-card ul li:before {
+            content: "✓";
+            color: var(--dourado);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Como Funciona */
+        .como-funciona {
+            padding: 60px 0;
+            background-color: var(--cinza);
+        }
+        
+        .passos {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .passo {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            margin-bottom: 30px;
+        }
+        
+        .passo-numero {
+            background: var(--verde);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .passo:not(:last-child):after {
+            content: "";
+            position: absolute;
+            top: 25px;
+            right: -50px;
+            width: 100px;
+            height: 2px;
+            background: var(--dourado);
+        }
+        
+        /* Depoimentos */
+        .depoimentos {
+            padding: 60px 0;
+        }
+        
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .depoimento-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .depoimento-card .cliente {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .depoimento-card .cliente img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .cliente-info h4 {
+            color: var(--verde);
+            margin-bottom: 5px;
+        }
+        
+        .cliente-info span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .estrelas {
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+        
+        /* FAQ */
+        .faq {
+            padding: 60px 0;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .faq-pergunta {
+            background: var(--verde);
+            color: white;
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-resposta {
+            background: white;
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-resposta-conteudo {
+            padding: 20px;
+        }
+        
+        .faq-item.ativo .faq-resposta {
+            max-height: 300px;
+        }
+        
+        /* CTA Final */
+        .cta-final {
+            background: linear-gradient(rgba(73, 115, 54, 0.9), rgba(73, 115, 54, 0.9)), url('img/bg-cta.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .cta-final h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--verde);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero-club {
+                padding: 80px 20px;
+            }
+            
+        
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+            
+            .plano-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .passo {
+                width: 100%;
+                margin-bottom: 40px;
+            }
+            
+            .passo:after {
+                display: none;
+            }
+            
+            .footer-section {
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="img/logoHeader.png" alt="Nutripet" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="paginaInicial.html">Home</a></li>
+                    <li><a href="paginaProdutos.html">Produtos</a></li>
+                    <li><a href="beneficios.html">Benefícios</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="nutripetClub.html" class="ativo">Nutripet Club</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+<section class="hero-club" style="background-image: url('img/imgNutripetClub.png');">
+    <div class="container">
+        <p>Receba os produtos que seu pet ama, no plano perfeito para vocês, com desconto e frete grátis!</p>
+        <a href="#planos" class="btn">Conheça os Planos</a>
+        <a href="#como-funciona" class="btn btn-outline">Como Funciona</a>
+    </div>
+</section>
+
+    <section class="beneficios-club">
+        <div class="container">
+            <h2 class="section-title">Vantagens Exclusivas do Nutripet Club</h2>
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>Entrega Automática</h3>
+                    <p>Nunca mais se preocupe em ficar sem - entregamos na frequência que você escolher.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>15% de Desconto</h3>
+                    <p>Economize em todos os produtos da sua assinatura.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-gift"></i>
+                    <h3>Frete Grátis</h3>
+                    <p>Entregamos em todo o Brasil sem custo adicional.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Ofertas Exclusivas</h3>
+                    <p>Acesso antecipado a lançamentos e promoções especiais.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="planos" id="planos">
+        <div class="container">
+            <h2 class="section-title">Escolha o Plano Perfeito</h2>
+            <div class="planos-container">
+                <div class="plano-card">
+                    <h3>Básico</h3>
+                    <div class="plano-preco">R$ 99<span>/mês</span></div>
+                    <ul>
+                        <li>1 produto por mês</li>
+                        <li>10% de desconto</li>
+                        <li>Frete grátis</li>
+                        <li>1 consulta nutricional gratuita</li>
+                        <li>Alterações a qualquer momento</li>
+
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%; display: block; text-align: center;">Assinar Agora</a>
+                </div>
+                
+                <div class="plano-card destaque">
+                    <div class="plano-tag">Mais Popular</div>
+                    <h3>Premium</h3>
+                    <div class="plano-preco">R$ 179<span>/mês</span></div>
+                    <ul>
+                        <li>3 produtos por mês</li>
+                        <li>15% de desconto</li>
+                        <li>Frete grátis</li>
+                        <li>1 consulta nutricional gratuita</li>
+                        <li>Amostras grátis todo mês</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%; display: block; text-align: center; background: var(--verde);">Assinar Agora</a>
+                </div>
+                
+                <div class="plano-card">
+                    <h3>Family</h3>
+                    <div class="plano-preco">R$ 249<span>/mês</span></div>
+                    <ul>
+                        <li>5 produtos por mês</li>
+                        <li>20% de desconto</li>
+                        <li>Frete grátis prioritário</li>
+                        <li>2 consultas nutricionais gratuitas</li>
+                        <li>Kit boas-vindas exclusivo</li>
+                    </ul>
+                    <a href="#" class="btn" style="width: 100%; display: block; text-align: center;">Assinar Agora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="como-funciona" id="como-funciona">
+        <div class="container">
+            <h2 class="section-title">Como Funciona o Nutripet Club</h2>
+            <div class="passos">
+                <div class="passo">
+                    <div class="passo-numero">1</div>
+                    <h3>Escolha Seu Plano</h3>
+                    <p>Selecione a assinatura que melhor atende às necessidades do seu pet.</p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">2</div>
+                    <h3>Monte Seu Kit</h3>
+                    <p>Personalize com os produtos que seu pet mais ama.</p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">3</div>
+                    <h3>Receba em Casa</h3>
+                    <p>Seus produtos no dia programado no conforto do seu lar<p>
+                </div>
+                <div class="passo">
+                    <div class="passo-numero">4</div>
+                    <h3>Ajuste Quando Quiser</h3>
+                    <p>Altere produtos, frequência ou cancele a qualquer momento.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O que dizem nossos assinantes</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/joão.jpg" alt="João Silva">
+                        <div class="cliente-info">
+                            <h4>João Silva</h4>
+                            <span>Assinante Premium</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Adoro a praticidade! Nunca mais precisei me preocupar em comprar ração, e ainda economizo com os descontos."</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/fernanda.jpg" alt="Fernanda Oliveira">
+                        <div class="cliente-info">
+                            <h4>Fernanda Oliveira</h4>
+                            <span>Assinante Family</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Com 3 cachorros em casa, o Nutripet Club foi a melhor solução. A consulta nutricional gratuita ajudou muito!"</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/otávio.jpg" alt="Otávio Costa">
+                        <div class="cliente-info">
+                            <h4>Otávio Costa</h4>
+                            <span>Assinante Básico</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Perfeito para minha gata exigente! Posso mudar os sabores todo mês pelo site."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <h3>Posso alterar os produtos da minha assinatura?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-resposta">
+                    <div class="faq-resposta-conteudo">
+                        <p>Sim! Você pode alterar os produtos, quantidades e frequência de entrega a qualquer momento através da sua área do cliente.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <h3>Como funciona o cancelamento?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-resposta">
+                    <div class="faq-resposta-conteudo">
+                        <p>O cancelamento pode ser feito a qualquer momento sem taxa de multa. Basta acessar sua conta e cancelar antes da próxima renovação.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <h3>Os descontos são cumulativos com outras promoções?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-resposta">
+                    <div class="faq-resposta-conteudo">
+                        <p>Os descontos do Nutripet Club não são cumulativos com outras promoções, mas você sempre terá o maior desconto disponível aplicado automaticamente.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-pergunta">
+                    <h3>Posso pausar minha assinatura?</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-resposta">
+                    <div class="faq-resposta-conteudo">
+                        <p>Sim, oferecemos a opção de pausar por até 3 meses. Durante a pausa, sua assinatura ficará inativa e não serão cobrados valores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Pronto para simplificar a vida do seu pet?</h2>
+            <a href="#planos" class="btn">Assinar Agora</a>
+            <a href="#" class="btn btn-outline">Tire Suas Dúvidas</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Nutripet</h3>
+                <p>Nutrição natural para uma vida cheia de energia!</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Minha Conta</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Política de Entrega</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                    <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                    <li><i class="fas fa-envelope"></i> contato@nutripet.com.br</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Nutripet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        const faqPerguntas = document.querySelectorAll('.faq-pergunta');
+        
+        faqPerguntas.forEach(pergunta => {
+            pergunta.addEventListener('click', () => {
+                const item = pergunta.parentElement;
+                item.classList.toggle('ativo');
+                
+                // Fecha outros itens
+                faqPerguntas.forEach(p => {
+                    if (p !== pergunta) {
+                        p.parentElement.classList.remove('ativo');
+                    }
+                });
+            });
+        });
+        
+        // Efeito de carregamento suave
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementos = document.querySelectorAll('.beneficio-card, .plano-card, .passo, .depoimento-card');
+            
+            elementos.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutripet - Alimentação Natural para Pets</title>
+    <style>
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        :root {
+            --verde: #497336;
+            --dourado: #bf9341;
+            --bege: #F5E9D9;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--verde);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-left: -150px; /* Distância exata da borda esquerda */
+
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--bege);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dourado);
+        }
+        
+        nav ul li a.ativo {
+            color: var(--dourado);
+        }
+
+        .hero {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                url('img/imagebanner.png');
+    background-size: cover;
+    background-position: center;
+    height: 80vh; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white;
+    position: relative; 
+}
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--dourado);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #c9a227;
+        }
+        
+        /* Destaques */
+        .destaques {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .destaques h2 {
+            color: var(--verde);
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+        }
+        
+        .linhas {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .linha-card {
+            background-color: var(--bege);
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .linha-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .linha-card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .linha-card h3 {
+            color: var(--verde);
+            margin-bottom: 10px;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--verde);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .linha-card {
+                width: 100%;
+                max-width: 350px;
+            }
+            
+            .footer-section {
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="img/logoHeader.png" alt="Nutripet" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="paginaInicial.html" class="ativo">Home</a></li>
+                    <li><a href="paginaProdutos.html">Produtos</a></li>
+                    <li><a href="beneficios.html">Benefícios</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="nutripetClub.html">Nutripet Club</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <div>
+                <h1>Nutrição Natural para Seu Pet</h1>
+                <p>Alimentos 100% naturais, formulados por veterinários para saúde e vitalidade do seu companheiro.</p>
+                <a href="paginaProdutos.html" class="btn">Conheça Nossos Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="destaques">
+        <div class="container">
+            <h2>Nossas Linhas</h2>
+            <div class="linhas">
+
+                <div class="linha-card">
+                    <img src="img/pitch (2).png" alt="Linha Care+">
+                    <h3> Nutripet Care+</h3>
+                    <p>Nutrição especializada para necessidades específicas.</p>
+                    <br>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>  
+
+
+                <div class="linha-card">
+                    <img src="img/pitch (1).png" alt="Linha Premium Dog">
+                    <h3>Nutripet Premium</h3>
+                    <p>Alimentação de elite para pets de todas as idades e portes.</p>
+                    <br>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+                
+            
+                
+                <div class="linha-card">
+                    <img src="img/pitch (3).png" alt="Linha Essentials">
+                    <h3>Snacks Funcionais</h3>
+                    <p>Qualidade natural acessível para seu pet.</p>
+                    <br>
+                    <a href="#" class="btn">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Nutripet</h3>
+                <p>Nutrição natural para uma vida cheia de energia!</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Minha Conta</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Política de Entrega</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                    <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                    <li><i class="fas fa-envelope"></i> contato@nutripet.com.br</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Nutripet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>

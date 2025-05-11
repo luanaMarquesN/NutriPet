@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós | Nutripet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        :root {
+            --verde: #497336;
+            --dourado: #bf9341;
+            --bege: #fcf7f2;
+            --cinza: #f8f8f8;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--verde);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-left: -150px; 
+
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--bege);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dourado);
+        }
+        
+        nav ul li a.ativo {
+            color: var(--dourado);
+        }
+        
+        /* Hero Especial Sobre */
+        .hero-sobre {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('img/imgSobre.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-sobre .container {
+            width: 100%;
+        }
+        
+        .hero-sobre h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero-sobre p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Nossa História */
+        .nossa-historia {
+            padding: 80px 0;
+            background: var(--bege);
+        }
+        
+        .nossa-historia h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--verde);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+        }
+        
+        .historia-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .historia-imagem {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            max-width: 400px; 
+            margin: 0 auto; 
+        }
+        
+        .historia-imagem img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .historia-imagem:hover img {
+            transform: scale(1.03);
+        }
+        
+        .historia-texto p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Missão, Visão, Valores */
+        .mvv {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .mvv h2 {
+            text-align: center;
+            color: var(--verde);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
+        
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .mvv-card {
+            background: var(--bege);
+            padding: 30px;
+            border-radius: 8px;
+            border-top: 4px solid var(--dourado);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .mvv-card h3 {
+            color: var(--verde);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .mvv-card h3 i {
+            margin-right: 10px;
+            color: var(--dourado);
+        }
+        
+        .mvv-card ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        
+        .mvv-card li {
+            margin-bottom: 8px;
+        }
+        
+        /* Equipe */
+        .equipe {
+            padding: 80px 0;
+            background: var(--bege);
+        }
+        
+        .equipe h2 {
+            text-align: center;
+            color: var(--verde);
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+        }
+        
+        .equipe p.subtitulo {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+        
+        .equipe-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .membro {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .membro:hover {
+            transform: translateY(-10px);
+        }
+        
+        .membro-imagem {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .membro-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .membro:hover .membro-imagem img {
+            transform: scale(1.1);
+        }
+        
+        .membro-info {
+            padding: 20px;
+        }
+        
+        .membro-info h3 {
+            color: var(--verde);
+            margin-bottom: 5px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .membro-info p.cargo {
+            color: var(--dourado);
+            margin: 5px 0;
+            font-weight: 600;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--verde);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+        }
+        
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero-sobre {
+                height: 50vh;
+            }
+            
+            .hero-sobre h1 {
+                font-size: 2rem;
+            }
+            
+            .historia-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .mvv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .equipe-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .equipe-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="img/logoHeader.png" alt="Nutripet" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="paginaInicial.html">Home</a></li>
+                    <li><a href="paginaProdutos.html">Produtos</a></li>
+                    <li><a href="beneficios.html">Benefícios</a></li>
+                    <li><a href="sobre.html" class="ativo">Sobre</a></li>
+                    <li><a href="nutripetClub.html">Nutripet Club</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-sobre" >
+        <div class="container">
+            <h1>Nutripet: Amor que Nutre</h1>
+            <p>Conheça nossa trajetória e propósito</p>
+        </div>
+    </section>
+    
+    <section class="nossa-historia">
+        <div class="container">
+            <h2>Nossa História</h2>
+            
+            <div class="historia-container">
+                <div class="historia-imagem">
+                    <img src="img/integrantes/fundadora.jpg" alt="Fundadora da Nutripet">
+                </div>
+                
+                <div class="historia-texto">
+                    <p>Fundada em 2022 pela médica veterinária Dra. Luana Marques, a NutriPet surgiu da frustração em encontrar alimentos verdadeiramente saudáveis para seu cão, que sofria com alergias alimentares.</p>
+                    <p> Determinada a mudar essa realidade, Dra. Luana convidou sua colega de faculdade e atual sócia, Dra. Tainá Nery, especialista em nutrição animal, para ajudá-la na formulação de rações naturais.</p>
+                    <p>Combinando conhecimento técnico e paixão pelos animais, a NutriPet cresceu rapidamente. O que começou em um pequeno laboratório artesanal em Santana de Parnaíba transformou-se, em apenas três anos, em uma referência nacional em nutrição animal natural, distribuindo produtos de alta qualidade e estabelecendo parcerias com as maiores marcas do setor.​
+                    </p>                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="mvv">
+        <div class="container">
+            <h2>Nossa Essência</h2>
+            
+            <div class="mvv-grid">
+                <div class="mvv-card">
+                    <h3><i class="fas fa-bullseye"></i> Missão</h3>
+                    <p>Desenvolver alimentos para animais domésticos sem conservantes e corantes. Rações e petiscos com muito mais nutrientes para a saúde e bem estar do seu animal.</p>
+                </div>
+                
+                <div class="mvv-card">
+                    <h3><i class="fas fa-eye"></i> Visão</h3>
+                    <p>Ser referência em alimentação natural para pets, ampliando nossa linha de produtos e promovendo o bem-estar de animais e tutores por meio da inovação e conscientização nutricional.​
+
+                    </p>
+                </div>
+                
+                <div class="mvv-card">
+                    <h3><i class="fas fa-heart"></i> Valores</h3>
+                    <ul>
+                        <li>Transparência</li>
+                        <li>Inovação</li>
+                        <li>Sustentabilidade</li>
+                        <li>Amor pelos animais</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="equipe">
+        <div class="container">
+            <h2>Nosso Time</h2>
+            <p class="subtitulo">Profissionais apaixonados por pets e comprometidos com excelência nutricional</p>
+            
+            <div class="equipe-grid">
+                <div class="membro">
+                    <div class="membro-imagem">
+                        <img src="img/integrantes/tainá-sócia.jpg" alt="Dra. Tainá Nery">
+                    </div>
+                    <div class="membro-info">
+                        <h3>Dra. Taína Nery</h3>
+                        <p class="cargo">Diretora de Produção e Pesquisa</p>
+                        <p>Médica Veterinária com especialização em Nutrição Animal</p>
+                    </div>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-imagem">
+                        <img src="img/integrantes/matheus-líderdofinanceiro.jpg" alt="Matheus Rocha">
+                    </div>
+                    <div class="membro-info">
+                        <h3>Matheus Rocha</h3>
+                        <p class="cargo">Líder do Setor Financeiro</p>
+                        <p>Antigo cliente e atual sócio</p>
+                    </div>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-imagem">
+                        <img src="img/integrantes/júlia-marketing.jpg" alt="Júlia Ramos">
+                    </div>
+                    <div class="membro-info">
+                        <h3>Júlia Ramos</h3>
+                        <p class="cargo">Líder do Setor de Marketing</p>
+                        <p>Líder criativa em marketing pet, com foco em nutrição saudável.
+
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="membro">
+                    <div class="membro-imagem">
+                        <img src="img/integrantes/arthur-líderdorh.jpg" alt="Arthur Queiroz">
+                    </div>
+                    <div class="membro-info">
+                        <h3>Arthur Queiroz</h3>
+                        <p class="cargo">Líder do Setor de RH</p>
+                        <p>Antigo cliente e atual sócio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Nutripet</h3>
+                <p>Nutrição natural para uma vida cheia de energia!</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Minha Conta</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Política de Entrega</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                    <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                    <li><i class="fas fa-envelope"></i> contato@nutripet.com.br</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Nutripet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Efeito de revelação ao rolar
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            });
+            
+            // Elementos para animar
+            const elementos = [
+                ...document.querySelectorAll('.historia-container > *'),
+                ...document.querySelectorAll('.mvv-card'),
+                ...document.querySelectorAll('.membro')
+            ];
+            
+            elementos.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease-out';
+                observer.observe(el);
+            });
+            
+            // Adiciona classe visible quando o elemento está na tela
+            const checkVisibility = () => {
+                elementos.forEach(el => {
+                    const rect = el.getBoundingClientRect();
+                    const isVisible = (rect.top <= window.innerHeight * 0.8);
+                    
+                    if(isVisible) {
+                        el.classList.add('visible');
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }
+                });
+            };
+            
+            // Verifica na carga inicial e no scroll
+            window.addEventListener('load', checkVisibility);
+            window.addEventListener('scroll', checkVisibility);
+            checkVisibility(); // Verifica imediatamente
+        });
+    </script>
+</body>
+</html>

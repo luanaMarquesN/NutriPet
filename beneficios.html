@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefícios | Nutripet</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+        
+        :root {
+            --verde: #497336;
+            --dourado: #bf9341;
+            --bege: #F5E9D9;
+            --cinza: #f8f8f8;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--verde);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 40px;
+            margin-left: -150px;
+
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--bege);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--dourado);
+        }
+        
+        nav ul li a.ativo {
+            color: var(--dourado);
+        }
+        
+        /* Hero Section */
+        .hero-beneficios {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 75vh; 
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: white; 
+    position: relative;
+}
+
+.hero-beneficios::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+
+.hero-beneficios .container {
+    position: relative;
+    z-index: 2;
+}
+        
+        .hero-beneficios h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+        }
+        
+        .hero-beneficios p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--dourado);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #a87d36;
+        }
+        
+        /* Seção Benefícios Gerais */
+        .beneficios-gerais {
+            padding: 60px 0;
+            background-color: var(--cinza);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--verde);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .beneficio-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .beneficio-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .beneficio-card i {
+            font-size: 2.5rem;
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+        
+        .beneficio-card h3 {
+            margin-bottom: 15px;
+            color: var(--verde);
+        }
+        
+        /* Seção Linhas Comparativo */
+        .comparativo-linhas {
+            padding: 60px 0;
+        }
+        
+        .linhas-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .linha-card {
+            background: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            text-align: center;
+        }
+        
+        .linha-card h3 {
+            color: var(--verde);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .linha-card ul {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 25px;
+        }
+        
+        .linha-card ul li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .linha-card ul li:before {
+            content: "✓";
+            color: var(--dourado);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        /* Seção Benefícios por Categoria */
+        .beneficios-categoria {
+            padding: 60px 0;
+            background-color: var(--cinza);
+        }
+        
+        .categoria-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn.ativo {
+            background: var(--verde);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .tab-content.ativo {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Depoimentos */
+        .depoimentos {
+            padding: 60px 0;
+        }
+        
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .depoimento-card {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .depoimento-card .cliente {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .depoimento-card .cliente img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .cliente-info h4 {
+            color: var(--verde);
+            margin-bottom: 5px;
+        }
+        
+        .cliente-info span {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .estrelas {
+            color: var(--dourado);
+            margin-bottom: 15px;
+        }
+        
+        /* CTA Final */
+        .cta-final {
+            background: linear-gradient(rgba(73, 115, 54, 0.9), rgba(73, 115, 54, 0.9)), url('img/bg-cta.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        
+        .cta-final h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .cta-final p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+        
+        /* Rodapé */
+        footer {
+            background-color: var(--verde);
+            color: white;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            width: 30%;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 20px;
+        }
+        
+      
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 15px;
+            }
+            
+            .hero-beneficios {
+                padding: 80px 20px;
+            }
+            
+            .hero-beneficios h1 {
+                font-size: 2rem;
+            }
+            
+            .linha-card {
+                width: 100%;
+                max-width: 100%;
+            }
+            
+            .footer-section {
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <img src="img/logoHeader.png" alt="Nutripet" class="logo">
+            <nav>
+                <ul>
+                    <li><a href="paginaInicial.html">Home</a></li>
+                    <li><a href="paginaProdutos.html">Produtos</a></li>
+                    <li><a href="beneficios.html" class="ativo">Benefícios</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="nutripetClub.html">Nutripet Club</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-beneficios" style="background-image: url('img/imgBenefícios.png');">
+        <div class="container">
+            <h1>Seu Pet Merece o Melhor</h1>
+            <p>Descubra como a alimentação natural da Nutripet pode transformar a saúde e vitalidade do seu companheiro.</p>
+            <a href="paginaProdutos.html" class="btn">Conheça Nossos Produtos</a>
+        </div>
+    </section>
+    <section class="beneficios-gerais">
+        <div class="container">
+            <h2 class="section-title">Por que escolher Nutripet?</h2>
+            <div class="beneficios-grid">
+                <div class="beneficio-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>100% Natural</h3>
+                    <p>Ingredientes selecionados, sem conservantes artificiais ou corantes.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Saúde Garantida</h3>
+                    <p>Desenvolvido por veterinários para promover bem-estar e longevidade.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-bone"></i>
+                    <h3>Alta Palatabilidade</h3>
+                    <p>Receitas irresistíveis que seu pet vai adorar.</p>
+                </div>
+                <div class="beneficio-card">
+                    <i class="fas fa-home"></i>
+                    <h3>Praticidade</h3>
+                    <p>Entregamos na sua casa no plano de assinatura que preferir.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comparativo-linhas">
+        <div class="container">
+            <h2 class="section-title">Conheça Nossas Linhas</h2>
+            <div class="linhas-container">
+                <div class="linha-card">
+                    <h3>Linha Premium</h3>
+                    <ul>
+                        <li>Ingredientes nobres e selecionados</li>
+                        <li>Alta concentração de proteínas</li>
+                        <li>Grãos integrais e superfoods</li>
+                        <li>Ômega 3 e 6 para pelagem saudável</li>
+                        <li>Sem transgênicos ou conservantes</li>
+                    </ul>
+                    <a href="paginaProdutos.html" class="btn">Ver Produtos</a>
+                </div>
+                <div class="linha-card">
+                    <h3>Linha Care+</h3>
+                    <ul>
+                        <li>Fórmulas para necessidades especiais</li>
+                        <li>Snacks funcionais com benefícios extras</li>
+                        <li>Probióticos para digestão saudável</li>
+                        <li>Extratos naturais para imunidade</li>
+                        <li>Baixo teor calórico para peso ideal</li>
+                    </ul>
+                    <a href="paginaProdutos.html" class="btn">Ver Produtos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="beneficios-categoria">
+        <div class="container">
+            <h2 class="section-title">Benefícios por Área de Saúde</h2>
+            
+            <div class="categoria-tabs">
+                <button class="tab-btn ativo" data-tab="digestao">Digestão</button>
+                <button class="tab-btn" data-tab="pelagem">Pelagem</button>
+                <button class="tab-btn" data-tab="articulacoes">Articulações</button>
+                <button class="tab-btn" data-tab="imunidade">Imunidade</button>
+            </div>
+            
+            <div id="digestao" class="tab-content ativo">
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i class="fas fa-seedling"></i>
+                        <h3>Fibras Naturais</h3>
+                        <p>Promove trânsito intestinal regular e evita constipação.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-bacteria"></i>
+                        <h3>Probióticos</h3>
+                        <p>Equilibra a flora intestinal para melhor absorção de nutrientes.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-heartbeat"></i>
+                        <h3>Proteínas Nobres</h3>
+                        <p>Facilmente digeríveis e altamente nutritivas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="pelagem" class="tab-content">
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i class="fas fa-water"></i>
+                        <h3>Ômega 3 e 6</h3>
+                        <p>Hidrata a pele e deixa a pelagem brilhante e macia.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-feather-alt"></i>
+                        <h3>Redução de Queda</h3>
+                        <p>Fortalece os folículos capilares para menos pelos soltos.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-allergies"></i>
+                        <h3>Menos Alergias</h3>
+                        <p>Ingredientes hipoalergênicos reduzem coceiras e irritações.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="articulacoes" class="tab-content">
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i class="fas fa-bone"></i>
+                        <h3>Glucosamina</h3>
+                        <p>Protege as cartilagens e previne problemas articulares.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-running"></i>
+                        <h3>Mobilidade</h3>
+                        <p>Reduz inflamações para maior conforto ao se movimentar.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-weight"></i>
+                        <h3>Peso Ideal</h3>
+                        <p>Fórmulas balanceadas evitam sobrecarga nas articulações.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="imunidade" class="tab-content">
+                <div class="beneficios-grid">
+                    <div class="beneficio-card">
+                        <i class="fas fa-shield-virus"></i>
+                        <h3>Antioxidantes</h3>
+                        <p>Combate radicais livres e fortalece as defesas naturais.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-virus-slash"></i>
+                        <h3>Extratos Vegetais</h3>
+                        <p>Equinácea e cúrcuma para imunidade reforçada.</p>
+                    </div>
+                    <div class="beneficio-card">
+                        <i class="fas fa-notes-medical"></i>
+                        <h3>Menos Idas ao Vet</h3>
+                        <p>Pets mais saudáveis = menos visitas ao veterinário.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <section class="depoimentos">
+        <div class="container">
+            <h2 class="section-title">O que dizem nossos clientes</h2>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/ana.jpg" alt="Ana Silva">
+                        <div class="cliente-info">
+                            <h4>Ana Silva</h4>
+                            <span>Tutora da Luna (Shih Tzu)</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Minha Luna tinha alergias constantes e coceiras. Depois que mudamos para a Nutripet, sua pelagem ficou linda e as alergias desapareceram!"</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/arthur.jpg" alt="Arthur Queiroz">
+                        <div class="cliente-info">
+                            <h4>Arthur Queiroz </h4>
+                            <span>Tutor do Thor(SRD)</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Meu Thor sempre teve problemas de peso. Com a linha Care+ da Nutripet, ele emagreceu de forma saudável e agora tem muito mais energia!"</p>
+                </div>
+                <div class="depoimento-card">
+                    <div class="cliente">
+                        <img src="img/clientes/mariana.jpg" alt="Mariana Costa">
+                        <div class="cliente-info">
+                            <h4>Mariana Costa</h4>
+                            <span>Tutora do Oliver (Labrador)</span>
+                        </div>
+                    </div>
+                    <div class="estrelas">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Adoro a praticidade da assinatura mensal. O Oliver ama a comida e eu amo não precisar carregar sacos pesados do pet shop!"</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="container">
+            <h2>Pronto para transformar a saúde do seu pet?</h2>
+            <p>Experimente a Nutripet e veja a diferença que uma alimentação natural pode fazer na vida do seu companheiro.</p>
+            <a href="paginaProdutos.html" class="btn">Compre Agora</a>
+            <a href="#" class="btn" style="background: transparent; border: 2px solid white; margin-left: 15px;">Fale com um Nutricionista</a>
+        </div>
+    </section>
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Nutripet</h3>
+                <p>Nutrição natural para uma vida cheia de energia!</p>
+                <br>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Links Rápidos</h3>
+                <ul>
+                    <li><a href="#">Minha Conta</a></li>
+                    <li><a href="#">Meus Pedidos</a></li>
+                    <li><a href="#">Política de Entrega</a></li>
+                    <li><a href="#">Trocas e Devoluções</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> São Paulo, Brasil</li>
+                    <li><i class="fas fa-phone"></i> (11) 98765-4321</li>
+                    <li><i class="fas fa-envelope"></i> contato@nutripet.com.br</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2023 Nutripet. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('ativo'));
+                tabContents.forEach(c => c.classList.remove('ativo'));
+                
+                btn.classList.add('ativo');
+                
+                const tabId = btn.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('ativo');
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementos = document.querySelectorAll('.beneficio-card, .linha-card, .depoimento-card');
+            
+            elementos.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body>
+</html>
